@@ -1,0 +1,13 @@
+D:\Repos\Practice\DocumentDbPoC\DocumentDbPOC\DocumentDbPOC\bin\Debug\DocumentDbPOC.exe.config
+D:\Repos\Practice\DocumentDbPoC\DocumentDbPOC\DocumentDbPOC\bin\Debug\DocumentDbPOC.exe
+D:\Repos\Practice\DocumentDbPoC\DocumentDbPOC\DocumentDbPOC\bin\Debug\DocumentDbPOC.pdb
+D:\Repos\Practice\DocumentDbPoC\DocumentDbPOC\DocumentDbPOC\bin\Debug\Microsoft.Azure.Documents.Client.dll
+D:\Repos\Practice\DocumentDbPoC\DocumentDbPOC\DocumentDbPOC\bin\Debug\Newtonsoft.Json.dll
+D:\Repos\Practice\DocumentDbPoC\DocumentDbPOC\DocumentDbPOC\bin\Debug\Microsoft.Azure.Documents.Client.xml
+D:\Repos\Practice\DocumentDbPoC\DocumentDbPOC\DocumentDbPOC\bin\Debug\Newtonsoft.Json.xml
+D:\Repos\Practice\DocumentDbPoC\DocumentDbPOC\DocumentDbPOC\obj\Debug\DocumentDbPOC.csprojResolveAssemblyReference.cache
+D:\Repos\Practice\DocumentDbPoC\DocumentDbPOC\DocumentDbPOC\obj\Debug\DocumentDbPOC.exe
+D:\Repos\Practice\DocumentDbPoC\DocumentDbPOC\DocumentDbPOC\obj\Debug\DocumentDbPOC.pdb
+D:\GitRepos\DocumentDb\DocumentDbPoC\DocumentDbPOC\DocumentDbPOC\bin\Debug\DocumentDbPOC.exe.config
+D:\GitRepos\DocumentDb\DocumentDbPoC\DocumentDbPOC\DocumentDbPOC\obj\Debug\DocumentDbPOC.exe
+D:\GitRepos\DocumentDb\DocumentDbPoC\DocumentDbPOC\DocumentDbPOC\obj\Debug\DocumentDbPOC.pdb
