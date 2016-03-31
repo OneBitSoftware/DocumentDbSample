@@ -11,3 +11,6 @@ D:\Repos\Practice\DocumentDbPoC\DocumentDbPOC\DocumentDbPOC\obj\Debug\DocumentDb
 D:\GitRepos\DocumentDb\DocumentDbPoC\DocumentDbPOC\DocumentDbPOC\bin\Debug\DocumentDbPOC.exe.config
 D:\GitRepos\DocumentDb\DocumentDbPoC\DocumentDbPOC\DocumentDbPOC\obj\Debug\DocumentDbPOC.exe
 D:\GitRepos\DocumentDb\DocumentDbPoC\DocumentDbPOC\DocumentDbPOC\obj\Debug\DocumentDbPOC.pdb
+D:\GitRepos\DocumentDb\DocumentDbPOC\bin\Debug\DocumentDbPOC.exe.config
+D:\GitRepos\DocumentDb\DocumentDbPOC\obj\Debug\DocumentDbPOC.exe
+D:\GitRepos\DocumentDb\DocumentDbPOC\obj\Debug\DocumentDbPOC.pdb

@@ -68,6 +68,7 @@ namespace DocumentDbPOC
         private static async Task DeleteDatabase(DocumentClient client, Database database)
         {
             // Clean up/delete the database
+
             await client.DeleteDatabaseAsync("dbs/" + database.Id);
             client.Dispose();
         }
