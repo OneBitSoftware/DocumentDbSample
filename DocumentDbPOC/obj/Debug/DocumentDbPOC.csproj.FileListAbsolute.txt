@@ -14,3 +14,10 @@ D:\GitRepos\DocumentDb\DocumentDbPoC\DocumentDbPOC\DocumentDbPOC\obj\Debug\Docum
 D:\GitRepos\DocumentDb\DocumentDbPOC\bin\Debug\DocumentDbPOC.exe.config
 D:\GitRepos\DocumentDb\DocumentDbPOC\obj\Debug\DocumentDbPOC.exe
 D:\GitRepos\DocumentDb\DocumentDbPOC\obj\Debug\DocumentDbPOC.pdb
+D:\GitRepos\DocumentDb\DocumentDbPOC\bin\Debug\DocumentDbPOC.exe
+D:\GitRepos\DocumentDb\DocumentDbPOC\bin\Debug\DocumentDbPOC.pdb
+D:\GitRepos\DocumentDb\DocumentDbPOC\bin\Debug\Microsoft.Azure.Documents.Client.dll
+D:\GitRepos\DocumentDb\DocumentDbPOC\bin\Debug\Newtonsoft.Json.dll
+D:\GitRepos\DocumentDb\DocumentDbPOC\bin\Debug\Microsoft.Azure.Documents.Client.xml
+D:\GitRepos\DocumentDb\DocumentDbPOC\bin\Debug\Newtonsoft.Json.xml
+D:\GitRepos\DocumentDb\DocumentDbPOC\obj\Debug\DocumentDbPOC.csprojResolveAssemblyReference.cache

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Azure.Documents;
@@ -15,6 +17,7 @@ namespace DocumentDbPOC
         private const string EndpointUrl = "Endpoint Url";
         private const string AuthorizationKey = "Authorization Key";
 
+
         static void Main(string[] args)
         {
             try
@@ -25,6 +28,7 @@ namespace DocumentDbPOC
             {
                 var baseException = e.GetBaseException();
                 Console.WriteLine("Error: {0}, Message: {1}", e.Message, baseException.Message);
+                Console.ReadLine();
             }
         }
 
@@ -39,10 +43,11 @@ namespace DocumentDbPOC
             var documentCollection = await CreateDocumentCollection(client, database);
 
             //await CreateDocument(client, database, documentCollection);
+            //await SeedDatabase(client, database, documentCollection);
 
-            GetQueries(client, database, documentCollection);
+            //GetQueries(client, database, documentCollection);
 
-            await DeleteQueries(client, database, documentCollection);
+            //await DeleteQueries(client, database, documentCollection);
 
             //await DeleteDatabase(client, database);
 
@@ -52,6 +57,8 @@ namespace DocumentDbPOC
             Console.ReadKey();
             Console.Clear();
         }
+
+
 
         private static async Task DeleteQueries(DocumentClient client, Database database, DocumentCollection documentCollection)
         {
@@ -67,8 +74,7 @@ namespace DocumentDbPOC
 
         private static async Task DeleteDatabase(DocumentClient client, Database database)
         {
-            // Clean up/delete the database
-
+            // Clean up/delete the database 
             await client.DeleteDatabaseAsync("dbs/" + database.Id);
             client.Dispose();
         }
@@ -107,6 +113,60 @@ namespace DocumentDbPOC
                 Console.WriteLine("\tRead {0} from LINQ query", family);
             }
         }
+
+        private static async Task SeedDatabase(DocumentClient client, Database database, DocumentCollection documentCollection)
+        { 
+            for (var i = 0; i < 100; i++)
+            {
+                var family = new Family
+                {
+                    Id = "SomeFamily" + i,
+                    LastName = "FamilyName" + i,
+                    Parents = new Parent[]
+                   {
+                        new Parent {FirstName = "Father" +i},
+                        new Parent {FirstName = "Mother" + i}
+                   },
+                    Children = new Child[]
+                   {
+                        new Child
+                        {
+                            FirstName = "Child" + i,
+                            Gender = "female",
+                            Grade = 5,
+                            Pets = new Pet[]
+                            {
+                                new Pet {GivenName = "Pet" + i}
+                            }
+                        }
+                   },
+                    Address = new Address { State = "WA", County = "King", City = "City" + i },
+                    IsRegistered = true
+                };
+
+                await client.CreateDocumentAsync("dbs/" + database.Id + "/colls/" + documentCollection.Id, family);
+            }
+
+            for (var j = 0; j < 100; j++)
+            {
+                var store = new Store
+                {
+                    Id = "StoreId" + j,
+                    Name = "Store" + j
+                };
+
+                for (var k = 0; k < 20; k++)
+                {
+                    var product = new Product { Id = "Product" + k };
+                    store.Products.Add(product);
+                }
+
+                await client.CreateDocumentAsync("dbs/" + database.Id + "/colls/" + documentCollection.Id, store);
+            }
+
+        
+        }
+
 
         private static async Task CreateDocument(DocumentClient client, Database database, DocumentCollection documentCollection)
         {
@@ -204,7 +264,7 @@ namespace DocumentDbPOC
         {
             var documentCollection =
                 client.CreateDocumentCollectionQuery("dbs/" + database.Id)
-                    .Where(c => c.Id == "FamilyCollection")
+                    .Where(c => c.Id == "DbCollectionsWrapper")
                     .AsEnumerable()
                     .FirstOrDefault();
 
@@ -214,7 +274,7 @@ namespace DocumentDbPOC
                 documentCollection = await client.CreateDocumentCollectionAsync("dbs/" + database.Id,
                     new DocumentCollection
                     {
-                        Id = "FamilyCollection"
+                        Id = "DbCollectionsWrapper"
                     });
             }
             return documentCollection;
@@ -239,6 +299,9 @@ namespace DocumentDbPOC
         internal sealed class Parent
         {
             public string FamilyName { get; set; }
+
+            public string Type => "Parent";
+
             public string FirstName { get; set; }
         }
 
@@ -254,11 +317,13 @@ namespace DocumentDbPOC
         internal sealed class Pet
         {
             public string GivenName { get; set; }
+            public string Type => "Pet";
         }
 
         internal sealed class Address
         {
             public string State { get; set; }
+            public string Type => "Address";
             public string County { get; set; }
             public string City { get; set; }
         }
@@ -267,11 +332,45 @@ namespace DocumentDbPOC
         {
             [JsonProperty(PropertyName = "id")]
             public string Id { get; set; }
+            public string Type => "Family";
             public string LastName { get; set; }
             public Parent[] Parents { get; set; }
             public Child[] Children { get; set; }
             public Address Address { get; set; }
             public bool IsRegistered { get; set; }
+        }
+
+        internal sealed class Product
+        {
+            [JsonProperty(PropertyName = "id")]
+            public string Id { get; set; }
+            public string Type => "Product";
+        }
+
+        internal sealed class Store
+        {
+            [JsonProperty(PropertyName = "id")]
+            public string Id { get; set; }
+            public string Type => "Store";
+            public string Name { get; set; }
+            public List<Product> Products { get; set; }
+
+            public Store()
+            {
+                Products = new List<Product>();
+            }
+        }
+
+        internal sealed class DbWrapper
+        {
+            public List<Family> Families { get; set; }
+            public List<Store> Stores { get; set; }
+
+            public DbWrapper()
+            {
+                this.Families = new List<Family>();
+                this.Stores = new List<Store>();
+            }
         }
     }
 }
